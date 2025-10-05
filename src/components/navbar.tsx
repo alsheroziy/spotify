@@ -1,9 +1,17 @@
-import { Archive, ArrowDownCircleIcon, Bell, Home, Search } from "lucide-react";
+import { Archive, ArrowDownCircleIcon, Bell, ExternalLink, Home, Search } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "./ui/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Link } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 export default function Navbar() {
   return (
@@ -38,7 +46,10 @@ export default function Navbar() {
         </div>
         <Bell size={15} />
         <ModeToggle />
-        <Avatar>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+          <Avatar>
           <AvatarImage
             className="w-8 h-8 rounded-full"
             src="https://github.com/shadcn.png"
@@ -46,6 +57,45 @@ export default function Navbar() {
           />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="start">
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                Accaunt
+                <DropdownMenuShortcut>
+                  <ExternalLink/>
+                </DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+              Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Upgrade to Premium
+                <DropdownMenuShortcut>
+                <ExternalLink/>
+                </DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Support
+                <DropdownMenuShortcut>
+                <ExternalLink/>
+                </DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Download
+                <DropdownMenuShortcut>
+                <ExternalLink/>
+                </DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Settings
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuItem>
+              Log out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );

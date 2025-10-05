@@ -8,7 +8,9 @@ export default function MainLayout({ children }: childProps) {
   return (
     <div>
       <Navbar />
-      {children}
+      <main className="min-h-screen">
+        {children}
+      </main>
     </div>
   )
 }
